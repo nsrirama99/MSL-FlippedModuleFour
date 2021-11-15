@@ -48,6 +48,7 @@ class ViewController: UIViewController, URLSessionDelegate {
     
     var isWaitingForMotionData = false
     
+    @IBOutlet weak var stepperDSIDOutlet: UIStepper!
     @IBOutlet weak var dsidLabel: UILabel!
     @IBOutlet weak var upArrow: UILabel!
     @IBOutlet weak var rightArrow: UILabel!
@@ -358,7 +359,7 @@ class ViewController: UIViewController, URLSessionDelegate {
                             let jsonDictionary = self.convertDataToDictionary(with: data)
                             
                             let labelResponse = jsonDictionary["prediction"]!
-                            print(labelResponse)
+                            print(labelResponse)    
                             self.displayLabelResponse(labelResponse as! String)
 
                         }
@@ -460,8 +461,8 @@ class ViewController: UIViewController, URLSessionDelegate {
     
     
     @IBAction func stepperDSID(_ sender: UIStepper) {
-        
-        //self.dsid = (sender as AnyObject).value
+        let temp = sender.value
+        self.dsid = Int(temp)
     }
     
 }
